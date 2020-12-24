@@ -1,22 +1,16 @@
 export const runLengthEncoding = (string: string): string => {
     let encodedString = '';
-    const previous: { char: string, count: number } = {char: string.charAt(0), count: 1}
-    const encode = (encoding: { char: string, count: number }): void => {
-        encodedString += `${encoding.count}${encoding.char}`;
+    let count =1;
+    const encode = (char: string, count: number ): void => {
+        encodedString += `${count}${char}`;
     }
     for (let i = 1; i < string.length; i++) {
-        if (previous.char !== string.charAt(i)) {
-            encode(previous);
-            previous.char = string.charAt(i);
-            previous.count = 1;
-        } else {
-            previous.count += 1;
-            if (previous.count === 10) {
-                encode({char: previous.char, count: 9});
-                previous.count = 1;
-            }
+        if (string.charAt(i-1) !== string.charAt(i) || count === 9) {
+            encode(string.charAt(i-1), count);
+            count =0;
         }
+        count++;
     }
-    encode(previous);
+    encode(string.charAt(string.length-1), count);
     return encodedString;
 }
