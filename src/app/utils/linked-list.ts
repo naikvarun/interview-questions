@@ -13,6 +13,7 @@ const buildLinkedList = (nodes: NodeType[], head: string) => {
     return nextNodes;
 };
 
+
 const cases: any[] = [
     {
         "k": 4,
