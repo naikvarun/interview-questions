@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "dev": "ts-node ./src/app/test-gen.ts"
+    "dev": "ts-node src/tst-gen/test-gen.ts"
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
