@@ -10,18 +10,33 @@ export class BST {
     }
 
     insert(value: number): BST {
-        // Write your code here.
-        // Do not edit the return statement of this method.
+        let subTree = value < this.value ? this.left : this.right;
+        if (subTree !== null) {
+            subTree.insert(value);
+        } else {
+            subTree = new BST(value);
+            if (value < this.value) {
+                this.left = subTree;
+            } else {
+                this.right = subTree;
+            }
+        }
         return this;
     }
 
-    contains(value: number) {
-        // Write your code here.
+    contains(value: number): boolean {
+        if (this.value === value) {
+            return true;
+        }
+        const subTree = value < this.value ? this.left : this.right;
+        if (subTree !== null) {
+            return subTree.contains(value);
+        }
         return false;
     }
 
     remove(value: number): BST {
-        // Write your code here.
+        // TODO: Write your code here.
         // Do not edit the return statement of this method.
         return this;
     }
